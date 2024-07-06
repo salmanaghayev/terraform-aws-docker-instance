@@ -51,10 +51,7 @@ resource "aws_security_group" "tf-sec-gr" {
       to_port     = port.value
       protocol    = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
-      #   ipv6_cidr_blocks = []
-      #   prefix_list_ids  = []
-      #   security_groups  = []
-      self = false
+      self        = false
     }
   }
   egress = [{
