@@ -1,4 +1,4 @@
-data "aws_ami" "amazonlinux-2023" {
+data "aws_ami" "amazon-linux-2023" {
   owners      = ["amazon"]
   most_recent = true
 
@@ -6,6 +6,7 @@ data "aws_ami" "amazonlinux-2023" {
     name   = "root-device-type"
     values = ["ebs"]
   }
+
   filter {
     name   = "virtualization-type"
     values = ["hvm"]
@@ -13,8 +14,9 @@ data "aws_ami" "amazonlinux-2023" {
 
   filter {
     name   = "architecture"
-    values = ["x86-64"]
+    values = ["x86_64"]
   }
+
   filter {
     name   = "owner-alias"
     values = ["amazon"]
@@ -27,7 +29,7 @@ data "aws_ami" "amazonlinux-2023" {
 }
 
 resource "aws_instance" "tf-ec2" {
-  ami                    = data.aws_ami.amazonlinux-2023.id
+  ami                    = data.aws_ami.amazon-linux-2023.id
   instance_type          = var.instance_type
   count                  = var.num_of_instance
   key_name               = var.key_name
