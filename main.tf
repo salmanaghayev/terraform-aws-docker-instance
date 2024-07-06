@@ -15,6 +15,11 @@ data "aws_ami" "amazonlinux-2023" {
     name   = "architecture"
     values = ["x86-64"]
   }
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
+
 
   filter {
     name   = "name"
